@@ -80,7 +80,7 @@ void Menu(int dato){
 
 int main()
 {
-	
+	Lista objLista;
 	int dato;
 	Menu(dato);
 
