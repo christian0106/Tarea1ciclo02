@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+void Menu();
+
 struct Nodo
 {
 	int dato;
@@ -50,16 +52,52 @@ void ingresodatos(){
 	while (cin>>dato){
 		objLista.Insertarls(dato);
 	}
-	objLista.mostrar_lista();
+	//objLista.mostrar_lista();
+	//cout<<endl;
+	objLista.Sumaelementos();
+	Menu();
+}
+void Lista::Sumaelementos(){
+	int Numero=0;
+	Nodo*s;
+	s=lsinicio;
+
+	while(s!=NULL){
+		Numero++;
+		//cout<<Numero<<endl;
+		s=s->sig;
+	}
+	cout<<endl<<"Actualmente en la lista hay "<<Numero<<" elementos."<<endl;
 }
 
 
 
-void Menu(int dato){
+
+
+
+
+int main()
+{
+	
+	int dato;
+	Menu();
+
+	/*while (cin>>dato){
+		objLista.Insertarls(dato);
+	}*/
+	//objLista.mostrar_lista();
+
+
+
+
+	return 0;
+}
+
+void Menu(){
 	int opcion;
 	Lista objLista;
 
-	//do{
+
 		cout <<"<:MENU:>"<<endl;
 		cout <<"1. Insertar valores. "<<endl;
 		cout <<"2. Mostrar elementos de la lista. "<<endl;
@@ -77,32 +115,12 @@ void Menu(int dato){
 			 				objLista.mostrar_lista();
 							break;
 			case 3: cout<<"El resultado de forma iterativa es: ";
-			        //Sumaelementos(void);//
+			        		objLista.Sumaelementos();
 							break;
 			case 4: cout<<"El resultado de forma iterativa es: ";
 			        //SumaelementosRec(void);//
 							break;
 			default: break;
 		}
-	}
-	//while(opcion!=5);
 
-	//}	
-
-
-int main()
-{
-	
-	int dato;
-	Menu(dato);
-
-	/*while (cin>>dato){
-		objLista.Insertarls(dato);
-	}*/
-	//objLista.mostrar_lista();
-
-
-
-
-	return 0;
-}
+	}	
