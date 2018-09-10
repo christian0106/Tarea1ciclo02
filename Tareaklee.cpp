@@ -42,13 +42,23 @@ void Lista::Insertarls(int dato){
 	lsinicio=nuevo;
 }
 
+void ingresodatos(objLista){
+
+
+		cout<<"Ingrese datos númericos a la lista: "
+	while (cin>>dato){
+		objLista.Insertarls(dato);
+	}
+	objLista.mostrar_lista();
+}
+
 
 
 void Menu(int dato){
 	int opcion;
 	Lista objLista;
 
-	do{
+	
 		cout <<"<:MENU:>"<<endl;
 		cout <<"1. Insertar valores. "<<endl;
 		cout <<"2. Mostrar elementos de la lista. "<<endl;
@@ -60,7 +70,7 @@ void Menu(int dato){
 		switch (opcion) {
 			case 1: cout<<"Digite los elementos"<<endl;
 
-							objLista.Insertarls(dato);
+							ingresodatos(objLista);
 							break;
 			case 2: cout<<"Los elementos de la lista son: "<<endl;
 			 				objLista.mostrar_lista();
@@ -73,21 +83,16 @@ void Menu(int dato){
 							break;
 		}
 	}
-	while(opcion!=5);
-
-	}	
+	
 
 
 int main()
 {
-	Lista objLista;
+	
 	int dato;
 	Menu(dato);
 
-	/*while (cin>>dato){
-		objLista.Insertarls(dato);
-	}*/
-	//objLista.mostrar_lista();
+
 
 
 
