@@ -18,8 +18,10 @@ public:
 	Lista(); // constructor
 	void Insertarls(int); // Insertar valores
 	void mostrar_lista(void); // Mostrar lista
-	void Sumaelementos(void);//Funcion declarada, más todavía no esta hecha
-	int SumaelementosRec(int);//Funcion declarada, más todavía no esta hecha
+	void Sumaelementos(void);//Funcion iterativa de cantidad de elementos 	
+	int SumaelementosRec(Nodo*/*,int*/); //Funcion recursiva de cantidad de elementos
+	void ingresodatos();
+	void inicSumaRec();
 
 
 };
@@ -44,20 +46,6 @@ void Lista::Insertarls(int dato){
 	nuevo->sig=lsinicio;
 	lsinicio=nuevo;
 }
-
-void ingresodatos(){
-	Lista objLista;
-	int dato;
-	
-		//cout<<"Ingrese datos númericos a la lista: "
-	while (cin>>dato){
-		objLista.Insertarls(dato);
-	}
-	//objLista.mostrar_lista();
-	//cout<<endl;
-	objLista.Sumaelementos();
-	Menu();
-}
 void Lista::Sumaelementos(){
 	int Numero=0;
 	Nodo*s;
@@ -65,21 +53,50 @@ void Lista::Sumaelementos(){
 
 	while(s!=NULL){
 		Numero++;
-		//cout<<Numero<<endl;
+		//cout<<s<<endl;
 		s=s->sig; 
 	}
 	cout<<endl<<"Actualmente en la lista hay "<<Numero<<" elementos."<<endl;
 }
 
+int Lista::SumaelementosRec(Nodo*list/*,int number*/){
 
+	//cout<<number<<list->dato<<endl;
+	if (list!=NULL){
+		//number++;
+		//cout<<number<<endl;
+		return 1+SumaelementosRec(list->sig/*,number*/);
+	}
+	else {
+		//cout<<number++<<endl;
+		//cout<<"else"<<endl;
+		return 0;
+	}
+}
 
-//agregando comentario x para subir git 
+void Lista::ingresodatos(){
+
+	int dato;
+	
+		//cout<<"Ingrese datos númericos a la lista: ";
+	while (cin>>dato){
+		Insertarls(dato);
+		//mostrar_lista();
+		cout<<endl;
+	}
+
+	//objLista.Sumaelementos();
+	//cout<< "ESTA PUTA CANTIDAD DE ELEMENTOS: "<<SumaelementosRec(lsinicio/*,0*/)<<" "<<endl;
+}
+void Lista::inicSumaRec(){
+	cout<<SumaelementosRec(lsinicio/*,0*/)<<" "<<endl;
+}
 
 
 
 int main()
 {
-	int dato;
+	//int dato;
 	Menu();
 
 	return 0;
@@ -89,9 +106,9 @@ void Menu(){
 	int opcion=0;
 	Lista objLista;
 
-
-	if (opcion==0){
-		cout<<opcion<<endl;
+do{
+	//	cout<<opcion<<endl;
+		opcion=0;
 		cout <<"<:MENU:>"<<endl;
 		cout <<"1. Insertar valores. "<<endl;
 		cout <<"2. Mostrar elementos de la lista. "<<endl;
@@ -102,20 +119,18 @@ void Menu(){
 
 		switch (opcion) {
 			case 1: cout<<"Digite los elementos"<<endl;
-
-							ingresodatos();
+							objLista.ingresodatos();
 							break;
 			case 2: cout<<"Los elementos de la lista son: "<<endl;
 			 				objLista.mostrar_lista();
 							break;
-			case 3: //cout<<"El resultado de forma iterativa es: ";
+			case 3: cout<<"El resultado de forma iterativa es: ";
 			        		objLista.Sumaelementos();
 							break;
-			case 4: cout<<"El resultado de forma iterativa es: ";
-			        //SumaelementosRec(void);//
+			case 4: cout<<"El resultado de forma recursiva es: ";
+			  				objLista.inicSumaRec();
 							break;
-			default: break;
+			default: cout<<"Opcion no valida"<<endl; break;
 		}
-	}
-
-	}	
+	}while(opcion!=5);
+}
