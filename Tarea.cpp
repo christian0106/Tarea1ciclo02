@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 void Menu();
 
 struct Nodo
@@ -18,7 +19,7 @@ public:
 	void Insertarls(int); // Insertar valores
 	void mostrar_lista(void); // Mostrar lista
 	void Sumaelementos(void);//Funcion declarada, más todavía no esta hecha
-	void SumaelementosRec(void);//Funcion declarada, más todavía no esta hecha
+	int SumaelementosRec(int);//Funcion declarada, más todavía no esta hecha
 
 
 };
@@ -65,44 +66,37 @@ void Lista::Sumaelementos(){
 	while(s!=NULL){
 		Numero++;
 		//cout<<Numero<<endl;
-		s=s->sig;
+		s=s->sig; 
 	}
 	cout<<endl<<"Actualmente en la lista hay "<<Numero<<" elementos."<<endl;
 }
 
 
 
-
+//agregando comentario x para subir git 
 
 
 
 int main()
 {
-	
 	int dato;
 	Menu();
-
-	/*while (cin>>dato){
-		objLista.Insertarls(dato);
-	}*/
-	//objLista.mostrar_lista();
-
-
-
 
 	return 0;
 }
 
 void Menu(){
-	int opcion;
+	int opcion=0;
 	Lista objLista;
 
 
+	if (opcion==0){
+		cout<<opcion<<endl;
 		cout <<"<:MENU:>"<<endl;
 		cout <<"1. Insertar valores. "<<endl;
 		cout <<"2. Mostrar elementos de la lista. "<<endl;
 		cout <<"3. Sumar los elementos iterativamente. "<<endl;
-		cout <<"4. Sumar los elemntos recursivamente. "<<endl;
+		cout <<"4. Sumar los elementos recursivamente. "<<endl;
 		cout <<"5. Salir."<<endl;
 		cin >>opcion;
 
@@ -114,7 +108,7 @@ void Menu(){
 			case 2: cout<<"Los elementos de la lista son: "<<endl;
 			 				objLista.mostrar_lista();
 							break;
-			case 3: cout<<"El resultado de forma iterativa es: ";
+			case 3: //cout<<"El resultado de forma iterativa es: ";
 			        		objLista.Sumaelementos();
 							break;
 			case 4: cout<<"El resultado de forma iterativa es: ";
@@ -122,5 +116,6 @@ void Menu(){
 							break;
 			default: break;
 		}
+	}
 
 	}	
